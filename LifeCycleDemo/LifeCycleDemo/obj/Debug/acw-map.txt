@@ -1,0 +1,4 @@
+LifeCycleDemo.MainActivity, LifeCycleDemo;md5de3f2781acb775f347d94062c0f3f895.MainActivity
+LifeCycleDemo.MainActivity, LifeCycleDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5de3f2781acb775f347d94062c0f3f895.MainActivity
+LifeCycleDemo.MainActivity;md5de3f2781acb775f347d94062c0f3f895.MainActivity
+lifecycledemo.MainActivity;md5de3f2781acb775f347d94062c0f3f895.MainActivity

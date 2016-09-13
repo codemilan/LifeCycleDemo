@@ -1,0 +1,16 @@
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\bin\Debug\WeatherApp.dll.config
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\bin\Debug\WeatherApp.dll
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\bin\Debug\WeatherApp.pdb
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\obj\Debug\WeatherApp.csproj.App.config
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\obj\Debug\WeatherApp.dll
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\obj\Debug\WeatherApp.pdb
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\obj\Debug\WeatherApp.dll.mdb
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\bin\Debug\WeatherApp.dll.mdb
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\obj\Debug\WeatherApp.dll.mdb
+C:\Users\BajraTech-CodeMilan\Documents\projects\android\test_apps\WeatherApp\WeatherApp\WeatherApp\bin\Debug\WeatherApp.dll.mdb
