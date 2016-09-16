@@ -1,0 +1,16 @@
+PracticeFeedApp.Droid.GetFeedActivity, PracticeFeedApp.Droid;md5ca3bd63db0a0cd7830ef8abf248df217.GetFeedActivity
+PracticeFeedApp.Droid.GetFeedActivity, PracticeFeedApp.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ca3bd63db0a0cd7830ef8abf248df217.GetFeedActivity
+PracticeFeedApp.Droid.GetFeedActivity;md5ca3bd63db0a0cd7830ef8abf248df217.GetFeedActivity
+practicefeedapp.droid.GetFeedActivity;md5ca3bd63db0a0cd7830ef8abf248df217.GetFeedActivity
+PracticeFeedApp.Droid.WebActivity, PracticeFeedApp.Droid;md5ca3bd63db0a0cd7830ef8abf248df217.WebActivity
+PracticeFeedApp.Droid.WebActivity, PracticeFeedApp.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ca3bd63db0a0cd7830ef8abf248df217.WebActivity
+PracticeFeedApp.Droid.WebActivity;md5ca3bd63db0a0cd7830ef8abf248df217.WebActivity
+practicefeedapp.droid.WebActivity;md5ca3bd63db0a0cd7830ef8abf248df217.WebActivity
+PracticeFeedApp.Droid.FeedAdapter, PracticeFeedApp.Droid;md5ca3bd63db0a0cd7830ef8abf248df217.FeedAdapter
+PracticeFeedApp.Droid.FeedAdapter, PracticeFeedApp.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ca3bd63db0a0cd7830ef8abf248df217.FeedAdapter
+PracticeFeedApp.Droid.FeedAdapter;md5ca3bd63db0a0cd7830ef8abf248df217.FeedAdapter
+practicefeedapp.droid.FeedAdapter;md5ca3bd63db0a0cd7830ef8abf248df217.FeedAdapter
+PracticeFeedApp.Droid.FeedActivity, PracticeFeedApp.Droid;md5ca3bd63db0a0cd7830ef8abf248df217.FeedActivity
+PracticeFeedApp.Droid.FeedActivity, PracticeFeedApp.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ca3bd63db0a0cd7830ef8abf248df217.FeedActivity
+PracticeFeedApp.Droid.FeedActivity;md5ca3bd63db0a0cd7830ef8abf248df217.FeedActivity
+practicefeedapp.droid.FeedActivity;md5ca3bd63db0a0cd7830ef8abf248df217.FeedActivity
