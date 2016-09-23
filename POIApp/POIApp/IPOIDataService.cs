@@ -1,3 +1,5 @@
+// HIT_N_TRAIL: I think interface should be protable libraries, since this has
+// act as an mediater between data service in application specfic code with the orm library.
 using System.Collections.Generic;
 
 namespace POIApp

@@ -1,3 +1,4 @@
+// HIT_N_TRAIL: i think should be in protable projects so that each platform specific projects can use this as a entity.
 namespace POIApp
 {
     public class PointOfInterest

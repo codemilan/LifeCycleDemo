@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using NUnit.Framework;
 using POIApp;
 
@@ -12,7 +13,13 @@ namespace POITestApp
         [SetUp]
         public void Setup()
         {
-            _poiService = new POIJsonService();
+            string storagePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            _poiService = new POIJsonService(storagePath);
+
+            foreach(string filename in Directory.EnumerateFiles(storagePath, "*.json"))
+            {
+                File.Delete(filename);
+            }
         }
 
         [TearDown]
@@ -60,6 +67,40 @@ namespace POITestApp
             PointOfInterest poi = _poiService.GetPOI(testId);
             Assert.NotNull(poi);
             Assert.AreEqual(poi.Name, "New POI");
+        }
+
+        [Test]
+        public void UpdatePOI()
+        {
+            PointOfInterest testpoi = new PointOfInterest();
+            testpoi.Name = "Update POI";
+            testpoi.Description = "POI being saved so we can test poi";
+            testpoi.Address = "100 Main streed";
+            _poiService.SavePOI(testpoi);
+            int testId = testpoi.Id.Value;
+            _poiService.RefreshCache();
+            PointOfInterest poi = _poiService.GetPOI(testId);
+            Assert.NotNull(poi);
+            Assert.AreEqual(poi.Description, "POI being saved so we can test poi");
+        }
+
+        [Test]
+        public void DeletePOI()
+        {
+            PointOfInterest testPOI = new PointOfInterest();
+            testPOI.Name = "Delete POI";
+            testPOI.Description = "POI being saved so we can test delete";
+            testPOI.Address = "100 Main Street\nAnywhere, TX 75069";
+            _poiService.SavePOI(testPOI);
+            int testId = testPOI.Id.Value;
+            // refresh the cache to be sure the data and   // poi was saved appropriately  _poiService.RefreshCache ();
+            PointOfInterest deletePOI = _poiService.GetPOI(testId);
+            Assert.IsNotNull(deletePOI);
+            _poiService.DeletePOI(deletePOI);
+            // refresh the cache to be sure the data was
+            // deleted appropriately  _poiService.RefreshCache ();
+            PointOfInterest poi = _poiService.GetPOI(testId);
+            Assert.Null(poi);
         }
     }
 }
