@@ -9,11 +9,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Locations;
 
 namespace POIApp
 {
     [Activity(Label = "POIDetailActivity")]
-    public class POIDetailActivity : Activity
+    public class POIDetailActivity : Activity, ILocationListener
     {
         EditText _nameEditText;
         EditText _descrEditText;
@@ -22,11 +23,16 @@ namespace POIApp
         EditText _longEditText;
         ImageView _poiImageView;
         PointOfInterest _poi;
+        LocationManager _locMgr;
+        ImageButton _locationImageButton;
+        ImageButton _mapImageButton;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.POIDetail);
+
+            _locMgr = GetSystemService(Context.LocationService) as LocationManager;
 
             // bind the controls contained in POIDetail view, this binding should be done after
             // setcontentview is called since this call will only create components accessible for this activity
@@ -37,6 +43,10 @@ namespace POIApp
             _latEditText = FindViewById<EditText>(Resource.Id.latEditText);
             _longEditText = FindViewById<EditText>(Resource.Id.longEditText);
             _poiImageView = FindViewById<ImageView>(Resource.Id.poiImageView);
+            _locationImageButton = FindViewById<ImageButton>(Resource.Id.locationImageButton);
+            _mapImageButton = FindViewById<ImageButton>(Resource.Id.mapImageButton);
+
+            _locationImageButton.Click += GetLocationClicked;
 
             if (Intent.HasExtra("poiId"))
             {
@@ -48,6 +58,14 @@ namespace POIApp
                 _poi = new PointOfInterest();
             }
             UpadateUi();
+        }
+
+        protected void GetLocationClicked(object s, EventArgs e)
+        {
+            Criteria criteria = new Criteria();
+            criteria.Accuracy = Accuracy.NoRequirement;
+            criteria.PowerRequirement = Power.NoRequirement;
+            _locMgr.RequestSingleUpdate(criteria, this, null);
         }
 
         protected void UpadateUi()
@@ -178,6 +196,27 @@ namespace POIApp
             Toast toast = Toast.MakeText(this, String.Format("{0} deleted.", _poi.Name), ToastLength.Short);
             toast.Show();
             Finish();
+        }
+
+        public void OnLocationChanged(Location location)
+        {
+            _latEditText.Text = location.Latitude.ToString();
+            _longEditText.Text = location.Longitude.ToString();
+        }
+
+        public void OnProviderDisabled(string provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnProviderEnabled(string provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnStatusChanged(string provider, [GeneratedEnum] Availability status, Bundle extras)
+        {
+            throw new NotImplementedException();
         }
     }
 }

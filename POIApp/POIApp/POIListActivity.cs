@@ -4,20 +4,25 @@ using Android.Widget;
 using Android.OS;
 using Android.Views;
 using Android.Content;
+using Android.Locations;
+using Android.Runtime;
 
 namespace POIApp
 {
     [Activity(Label = "POIs", MainLauncher = true, Icon = "@drawable/icon")]
-    public class POIListActivity : Activity
+    public class POIListActivity : Activity, ILocationListener
     {
         ListView _poiListView;
         POIListViewAdapter _adapter;
+        LocationManager _locMgr;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.POIList);
+
+            _locMgr = GetSystemService(Context.LocationService) as LocationManager;
 
             _poiListView = FindViewById<ListView>(Resource.Id.poiListView);
             _adapter = new POIListViewAdapter(this);
@@ -28,7 +33,20 @@ namespace POIApp
         protected override void OnResume()
         {
             base.OnResume();
+
+            Criteria criteria = new Criteria();
+            criteria.Accuracy = Accuracy.NoRequirement;
+            criteria.PowerRequirement = Power.NoRequirement;
+            string provider = _locMgr.GetBestProvider(criteria, true);
+            _locMgr.RequestLocationUpdates(provider, 20000, 100, this);
+
             _adapter.NotifyDataSetChanged();
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            _locMgr.RemoveUpdates(this);
         }
 
         protected void POIClicked(object sender, ListView.ItemClickEventArgs e)
@@ -61,6 +79,28 @@ namespace POIApp
                 default:
                     return base.OnOptionsItemSelected(item);
             }
+        }
+
+        // implement methods from ILocationServices interface
+        public void OnLocationChanged(Location location)
+        {
+            _adapter.CurrentLocation = location;
+            _adapter.NotifyDataSetChanged();
+        }
+
+        public void OnProviderDisabled(string provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnProviderEnabled(string provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnStatusChanged(string provider, [GeneratedEnum] Availability status, Bundle extras)
+        {
+            throw new NotImplementedException();
         }
     }
 }

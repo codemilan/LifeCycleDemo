@@ -70,5 +70,24 @@
                     p1:id="@+id/longEditText" />
             </TableRow>
         </TableLayout>
+        <LinearLayout
+            p1:orientation="horizontal"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/linearLayout2"
+            p1:layout_gravity="center_horizontal"
+            p1:paddingTop="10dp"
+            p1:paddingBottom="10dp">
+            <ImageButton
+                p1:src="@drawable/map"
+                p1:layout_width="wrap_content"
+                p1:layout_height="match_parent"
+                p1:id="@+id/mapImageButton" />
+            <ImageButton
+                p1:src="@drawable/location"
+                p1:layout_width="wrap_content"
+                p1:layout_height="match_parent"
+                p1:id="@+id/locationImageButton " />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

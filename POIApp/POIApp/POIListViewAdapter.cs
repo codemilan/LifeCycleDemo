@@ -9,12 +9,14 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Locations;
 
 namespace POIApp
 {
     public class POIListViewAdapter : BaseAdapter<PointOfInterest>
     {
         private readonly Activity _context;
+        public Location CurrentLocation { get; set; }
 
         public POIListViewAdapter(Activity context)
         {
@@ -58,6 +60,21 @@ namespace POIApp
             {
                 view.FindViewById<TextView>(Resource.Id.addrTextView).Text = poi.Address;
             }
+
+            //calculate distance between current location and poi location points.
+            if ((CurrentLocation != null) && (poi.Latitude.HasValue) && (poi.Longitude.HasValue))
+            {
+                Location poiLocation = new Location("");
+                poiLocation.Latitude = poi.Latitude.Value;
+                poiLocation.Longitude = poi.Longitude.Value;
+                float distance = CurrentLocation.DistanceTo(poiLocation) * 0.000621371F;
+                view.FindViewById<TextView>(Resource.Id.distanceTextView).Text = String.Format("{0:0,0.00} miles", distance);
+            }
+            else
+            {
+                view.FindViewById<TextView>(Resource.Id.distanceTextView).Text = "??";
+            }
+
             return view;
         }
     }
