@@ -9,7 +9,8 @@ using Android.Runtime;
 
 namespace POIApp
 {
-    [Activity(Label = "POIs", MainLauncher = true, Icon = "@drawable/icon")]
+
+    [Activity(Label = "POIs", MainLauncher = true, Icon = "@drawable/icon", ConfigurationChanges = (Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize))]
     public class POIListActivity : Activity, ILocationListener
     {
         ListView _poiListView;

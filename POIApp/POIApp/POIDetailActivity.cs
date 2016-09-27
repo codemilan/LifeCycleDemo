@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Locations;
+using Android.Content.PM;
 
 namespace POIApp
 {
@@ -26,6 +27,8 @@ namespace POIApp
         LocationManager _locMgr;
         ImageButton _locationImageButton;
         ImageButton _mapImageButton;
+        ProgressDialog _progressDialog;
+        bool _obtainingLocation = false;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -48,6 +51,8 @@ namespace POIApp
 
             _locationImageButton.Click += GetLocationClicked;
 
+            _mapImageButton.Click += GetMapClicked;
+
             if (Intent.HasExtra("poiId"))
             {
                 int poiId = Intent.GetIntExtra("poiId", -1);
@@ -62,11 +67,41 @@ namespace POIApp
 
         protected void GetLocationClicked(object s, EventArgs e)
         {
+            _obtainingLocation = true;
+            _progressDialog = ProgressDialog.Show(this, "", "Obtaining location...");
             Criteria criteria = new Criteria();
             criteria.Accuracy = Accuracy.NoRequirement;
             criteria.PowerRequirement = Power.NoRequirement;
             _locMgr.RequestSingleUpdate(criteria, this, null);
         }
+
+        protected void GetMapClicked(object s, EventArgs e)
+        {
+            Android.Net.Uri geoUri;
+            if (String.IsNullOrEmpty(_addrEditText.Text))
+            {
+                geoUri = Android.Net.Uri.Parse(String.Format("geo:{0},{1}", _poi.Latitude, _poi.Longitude));
+            }
+            else
+            {
+                geoUri = Android.Net.Uri.Parse(String.Format("geo:0,0?q={0}", _addrEditText.Text));
+            }
+            Intent mapIntent = new Intent(Intent.ActionView, geoUri);
+
+            PackageManager packageManager = PackageManager;
+            IList<ResolveInfo> activities = packageManager.QueryIntentActivities(mapIntent, 0);
+            if (activities.Count == 0)
+            {
+                AlertDialog.Builder alertConfirm = new AlertDialog.Builder(this);
+                alertConfirm.SetCancelable(false);
+                alertConfirm.SetPositiveButton("OK", delegate { });
+                alertConfirm.SetMessage("No map app available.");
+                alertConfirm.Show();
+            }
+            else
+                StartActivity(mapIntent);
+        }
+
 
         protected void UpadateUi()
         {
@@ -74,7 +109,7 @@ namespace POIApp
             _addrEditText.Text = _poi.Address;
             _descrEditText.Text = _poi.Description;
             _latEditText.Text = _poi.Latitude.ToString();
-            _longEditText.Text = _poi.Longitude.ToString();   
+            _longEditText.Text = _poi.Longitude.ToString();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -104,8 +139,8 @@ namespace POIApp
             // disable delete for a new POI
             if (!_poi.Id.HasValue)
             {
-                IMenuItem item = menu.FindItem (Resource.Id.actionDelete);
-                item.SetEnabled (false);
+                IMenuItem item = menu.FindItem(Resource.Id.actionDelete);
+                item.SetEnabled(false);
             }
             return true;
         }
@@ -202,6 +237,16 @@ namespace POIApp
         {
             _latEditText.Text = location.Latitude.ToString();
             _longEditText.Text = location.Longitude.ToString();
+
+            Geocoder geocdr = new Geocoder(this);
+            IList<Address> addresses = geocdr.GetFromLocation(location.Latitude, location.Longitude, 5);
+
+            if (addresses.Any())
+            {
+                UpdateAddressFields(addresses.First());
+            }
+            _obtainingLocation = false;
+            _progressDialog.Cancel();
         }
 
         public void OnProviderDisabled(string provider)
@@ -218,5 +263,44 @@ namespace POIApp
         {
             throw new NotImplementedException();
         }
+
+        protected void UpdateAddressFields(Address addr)
+        {
+            if (String.IsNullOrEmpty(_nameEditText.Text))
+            {
+                _nameEditText.Text = addr.FeatureName;
+
+                if (String.IsNullOrEmpty(_addrEditText.Text))
+                {
+                    for (int i = 0; i < addr.MaxAddressLineIndex; i++)
+                    {
+                        if (!String.IsNullOrEmpty(_addrEditText.Text))
+                        {
+                            _addrEditText.Text += System.Environment.NewLine;
+                            _addrEditText.Text += addr.GetAddressLine(i);
+                        }
+                    }
+                }
+            }
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            base.OnSaveInstanceState(outState);
+            outState.PutBoolean("obtaininglocation", _obtainingLocation);
+            // if we were waiting on location updates; cancel
+            if (_obtainingLocation)
+            {
+                _locMgr.RemoveUpdates(this);
+            }
+        }
+
+        protected override void OnRestoreInstanceState(Bundle savedInstanceState)
+        {
+            base.OnRestoreInstanceState(savedInstanceState);
+            _obtainingLocation = savedInstanceState.GetBoolean("obtaininglocation");
+            // if we were waiting on location updates; restart
+            if (_obtainingLocation)
+                GetLocationClicked (this, new EventArgs ()); } 
+        }
     }
-}

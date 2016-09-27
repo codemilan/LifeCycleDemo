@@ -74,7 +74,6 @@ namespace POIApp
             {
                 view.FindViewById<TextView>(Resource.Id.distanceTextView).Text = "??";
             }
-
             return view;
         }
     }
