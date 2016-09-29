@@ -41,6 +41,22 @@ namespace DesignerWalkthrough
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int theme_devicedefault_background = 2131034112;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
@@ -60,20 +76,20 @@ namespace DesignerWalkthrough
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int imageView1 = 2131034112;
+			// aapt resource value: 0x7f070000
+			public const int imageView1 = 2131165184;
 			
-			// aapt resource value: 0x7f050001
-			public const int linearLayout1 = 2131034113;
+			// aapt resource value: 0x7f070001
+			public const int linearLayout1 = 2131165185;
 			
-			// aapt resource value: 0x7f050004
-			public const int myListView = 2131034116;
+			// aapt resource value: 0x7f070004
+			public const int myListView = 2131165188;
 			
-			// aapt resource value: 0x7f050002
-			public const int textView1 = 2131034114;
+			// aapt resource value: 0x7f070002
+			public const int textView1 = 2131165186;
 			
-			// aapt resource value: 0x7f050003
-			public const int textView2 = 2131034115;
+			// aapt resource value: 0x7f070003
+			public const int textView2 = 2131165187;
 			
 			static Id()
 			{
@@ -119,6 +135,22 @@ namespace DesignerWalkthrough
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int Theme_Custom = 2131099648;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}
