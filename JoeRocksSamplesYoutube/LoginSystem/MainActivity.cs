@@ -32,6 +32,8 @@ namespace LoginSystem
                 FragmentTransaction transaction = FragmentManager.BeginTransaction();
                 dialog_SignUp signUpDialog = new dialog_SignUp();
                 signUpDialog.Show(transaction, "dialog fragment");
+
+                // handle custom event generated on fragment signUp button with custom event handler.
                 signUpDialog.mOnsignUpComplete += SignUpDialog_mOnsignUpComplete;
             };
         }
