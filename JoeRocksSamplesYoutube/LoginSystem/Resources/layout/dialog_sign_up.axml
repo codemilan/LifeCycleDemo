@@ -9,14 +9,15 @@
         android:id="@+id/txtFirstName"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="@drawable/edit_text_style"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="25dp"
         android:hint="First Name"
         android:paddingLeft="10dp"
-        android:textColor="#000" />
+        android:background="@drawable/edit_text_style"
+        android:textColor="#000"
+        android:textColorHint="#999" />
     <EditText
         android:layout_below="@id/txtFirstName"
         android:inputType="textEmailAddress"
@@ -29,7 +30,8 @@
         android:layout_marginRight="20dp"
         android:hint="Email"
         android:paddingLeft="10dp"
-        android:textColor="#000" />
+        android:textColor="#000"
+        android:textColorHint="#999" />
     <EditText
         android:inputType="textPassword"
         android:layout_width="match_parent"
@@ -41,7 +43,8 @@
         android:hint="Password"
         android:paddingLeft="10dp"
         android:textColor="#000"
-        android:layout_below="@id/txtEmail" />
+        android:layout_below="@id/txtEmail"
+        android:textColorHint="#999" />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

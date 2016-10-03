@@ -1,15 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
   <item android:state_focused="true">
-
     <shape android:shape="rectangle">
-
       <gradient
         android:startColor="#FFF"
         android:endColor="#FFF">
       </gradient>
-
 
       <stroke
         android:width="3dp"
@@ -23,13 +19,11 @@
       <padding
         android:left="10dp">
       </padding>
-
     </shape>
   </item>
 
   <item>
     <shape>
-
       <gradient
         android:startColor="#FFF"
         android:endColor="#FFF">
@@ -45,8 +39,6 @@
         android:right="10dp"
           android:bottom="6dp">
       </padding>
-
     </shape>
   </item>
-
 </selector>
