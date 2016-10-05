@@ -9,7 +9,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V7.Widget;
 
-namespace RecyclerViewTutorial
+namespace RecyclerViewTut
 {
     [Activity(Label = "RecyclerViewTutorial", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
@@ -95,4 +95,3 @@ namespace RecyclerViewTutorial
         }
     }
 }
-
